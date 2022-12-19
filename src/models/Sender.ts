@@ -7,3 +7,15 @@ export type Sender = {
     orders: Parcel[] | undefined;
 }
 
+export class SenderStore {
+  index(): Sender[] {
+    return senders;
+  }
+
+  show(id: number): Sender | undefined {
+    return senders.find((sender) => {
+      sender.id == id;
+    });
+  }
+  
+}

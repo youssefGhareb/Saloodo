@@ -1,4 +1,5 @@
 import { Biker } from "./models/Biker";
+import { Parcel } from "./models/Parcel";
 import { Sender } from "./models/Sender";
 
 export let senders: Sender[] = [
@@ -81,3 +82,5 @@ export let bikers: Biker[] = [
     orders: []
   }
 ];
+
+export let parcels: Parcel[] = [];
