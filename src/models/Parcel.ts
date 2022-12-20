@@ -1,7 +1,7 @@
 import { parcels } from "../data";
 
 export type Parcel = {
-  id: number;
+  id: string | number;
   pickUp: string;
   dropOff: string;
   pickUpTimeStamp: number | undefined;
@@ -27,14 +27,42 @@ export class ParcelStore {
     parcels.push(parcel);
   }
 
-  pickup(id: number, bikerID): Parcel | null {
-    const index = parcels.findIndex(parcel => parcel.id === id);
-    if(index != -1 && parcels[index].pickedUp === false){
-        parcels[index].pickedUp = true;
-        parcels[index].bikerID = bikerID;
-        parcels[index].status = "Picked up";
-        return parcels[index];
+  pickup(id: number, bikerID: number): Parcel | null {
+    const index = parcels.findIndex((parcel) => {
+      return parcel.id == id;
+    });
+    if (index != -1 && parcels[index].pickedUp === false) {
+      parcels[index].pickedUp = true;
+      parcels[index].bikerID = bikerID;
+      parcels[index].status = "Picked up";
+      return parcels[index];
     }
     return null;
+  }
+
+  confrimPickup(parcelID: number, timeStamp: number): Parcel | null {
+    const index = parcels.findIndex((parcel) => {
+      return parcel.id == parcelID;
+    });
+    if (index != -1) {
+      parcels[index].pickUpTimeStamp = timeStamp;
+      parcels[index].status = "Pick up time Confirmed";
+      return parcels[index];
+    } else {
+      return null;
+    }
+  }
+
+  confrimDelivery(parcelID: number, timeStamp: number): Parcel | null {
+    const index = parcels.findIndex((parcel) => {
+      return parcel.id == parcelID;
+    });
+    if (index != -1) {
+      parcels[index].dropOffTimeStamp = timeStamp;
+      parcels[index].status = "Delivered";
+      return parcels[index];
+    } else {
+      return null;
+    }
   }
 }

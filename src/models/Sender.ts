@@ -1,11 +1,11 @@
 import { senders } from "../data";
-import { Parcel } from "./Parcel"
+import { Parcel } from "./Parcel";
 
 export type Sender = {
-    id: number,
-    name: string,
-    orders: Parcel[] | undefined;
-}
+  id: number;
+  name: string;
+  orders: Parcel[] | undefined;
+};
 
 export class SenderStore {
   index(): Sender[] {
@@ -13,9 +13,10 @@ export class SenderStore {
   }
 
   show(id: number): Sender | undefined {
-    return senders.find((sender) => {
-      sender.id == id;
+    const result: Sender | undefined = senders.find((sender) => {
+      return id == sender.id;
     });
+
+    return result;
   }
-  
 }

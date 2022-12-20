@@ -83,4 +83,16 @@ export let bikers: Biker[] = [
   }
 ];
 
-export let parcels: Parcel[] = [];
+export let parcels: Parcel[] = [
+  {
+    id: 1,
+    bikerID: undefined,
+    pickUp: "7 london avenue, london",
+    dropOff: "14th of mike road, Blueberyy",
+    pickedUp: false,
+    dropOffTimeStamp: undefined,
+    pickUpTimeStamp: undefined,
+    senderID: 1,
+    status: "Processing"
+  }
+];

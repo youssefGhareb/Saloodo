@@ -14,7 +14,7 @@ export class BikerStore {
 
   show(id: number): Biker | undefined {
     return bikers.find((biker) => {
-      biker.id === id;
+      return biker.id == id;
     });
   }
 }
